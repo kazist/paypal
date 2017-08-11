@@ -1,0 +1,113 @@
+{
+    "frontend": [{
+            "title": "Paypal Payments Return",
+            "description": "Paypal Payments Return.",
+            "controller": "Paypal\\Payments\\Code\\Controllers\\PaymentsController::returnAction",
+            "unique_name": "paypal.payments.return",
+            "route": "paypal/payments/return",
+            "permissions": "can_view, can_viewown",
+            "arguments": "",
+            "keywords": "paypal, return",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 0
+
+        }, {
+            "title": "Paypal Payments Cancelled",
+            "description": "Paypal Payments Cancelled",
+            "controller": "Paypal\\Payments\\Code\\Controllers\\PaymentsController::cancelAction",
+            "unique_name": "paypal.payments.cancel",
+            "route": "paypal/payments/cancel",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "paypal,cancel",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 0
+        }, {
+            "title": "Paypal Payments Notify",
+            "description": "Paypal Payments Notify",
+            "controller": "Paypal\\Payments\\Code\\Controllers\\PaymentsController::notifyAction",
+            "unique_name": "paypal.payments.notify",
+            "route": "paypal/payments/notify",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "paypal, notify",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 0
+        }],
+    "backend": [{
+            "title": "General Tasks",
+            "description": "General Tasks.",
+            "controller": "Paypal\\Payments\\Code\\Controllers\\Admin\\PaymentsController::taskAction",
+            "unique_name": "admin.paypal.payments.task",
+            "route": "admin/paypal/payments/task",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": "",
+            "keywords": "paypal, task",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }, {
+            "title": "Paypal Payments List",
+            "description": "Management of Paypal Payments.",
+            "controller": "Paypal\\Payments\\Code\\Controllers\\Admin\\PaymentsController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "admin.paypal.payments",
+            "route": "admin/paypal/payments",
+            "arguments": "",
+            "keywords": "cron, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Paypal Payments Detail: {{ item.name }}",
+            "description": "Paypal Payments Detail: {{ item.name }}",
+            "controller": "Paypal\\Payments\\Code\\Controllers\\Admin\\PaymentsController::detailAction",
+            "unique_name": "admin.paypal.payments.detail",
+            "route": "admin/paypal/payments/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "cron, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Paypal Payments Delete: {{ item.name }}",
+            "description": "Paypal Payments Delete: {{ item.name }}",
+            "controller": "Paypal\\Payments\\Code\\Controllers\\Admin\\PaymentsController::deleteAction",
+            "unique_name": "admin.paypal.payments.delete",
+            "route": "admin/paypal/payments/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "cron, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"]
+            }
+        }]
+} 	
