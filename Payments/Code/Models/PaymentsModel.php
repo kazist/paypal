@@ -22,6 +22,12 @@ class PaymentsModel extends BasePaymentsModel {
 
     public $code = '';
 
+    public function appendSearchQuery($query) {
+
+        $this->ingore_search_query = true;
+        return parent:: appendSearchQuery($query);
+    }
+
     public function notificationTransaction($payment_id) {
 
         $this->processPaypal($payment_id);
