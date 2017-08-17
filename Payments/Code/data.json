@@ -1,7 +1,7 @@
 
 [{
         "_table_name": "payments_gateways",
-        "tracking_id": "13",
+        "system_tracking_id": "13",
         "short_name": "paypal",
         "long_name": "Paypal",
         "input_label": "Paypal",
