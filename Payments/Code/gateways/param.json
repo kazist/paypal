@@ -1,0 +1,7 @@
+[{
+        "name": "email",
+        "label": "Email",
+        "default": "",
+        "tooltip": "Enter Your Paypal Email Addres.",
+        "type": "text"
+    }]
