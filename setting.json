@@ -7,16 +7,19 @@
                     "name": "paypal_payments_cmd",
                     "label": "Paypal Cmd",
                     "default": "_cart",
+                    "tooltip": "Set Paypal Cmd for the forms submited.",
                     "type": "text"
                 }, {
                     "name": "paypal_payments_business",
                     "label": "Paypal Business",
                     "default": "",
+                    "tooltip": "Set Paypal Business/merchant email address",
                     "type": "text"
                 }, {
                     "name": "paypal_payments_button",
                     "label": "Paypal Button",
                     "default": "https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif",
+                    "tooltip": "Set your preferred button to be show on the form.",
                     "type": "text"
                 }]
         }]
