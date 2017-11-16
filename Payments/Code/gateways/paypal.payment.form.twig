@@ -6,11 +6,12 @@
 <!-- Specify a Subscribe button. -->
 <input type='hidden' name='item_name' value='{{ payment.description }}'>
 <input type='hidden' name='item_number' value='{{ payment.id }}'>
-<input type="hidden" name="currency_code" value="{{ gateway.currency }}">
-<input type='hidden' name='amount' value='{{gateway.total_amount}}'>
-<input type="hidden" name="a3" value="{{gateway.total_amount}}">
+<input type="hidden" name="currency_code" value="USD">
+<input type='hidden' name='amount' value='{{gateway.total_amount/converter.buying|default(1)}}'>
+<input type="hidden" name="a3" value="{{gateway.total_amount/converter.buying|default(1)}}">
 <input type='hidden' name='cancel_return' value='{{ generate_url('paypal.payments.cancel') }}'>
 <input type='hidden' name='return' value='{{ generate_url('paypal.payments.return' ) }}'>
+<input type='hidden' name='notify_url' value='{{ generate_url('paypal.payments.notify' ) }}'>
 
 <center>
     <a class="process-payment"  href="#" title="Pay with Paypal">
