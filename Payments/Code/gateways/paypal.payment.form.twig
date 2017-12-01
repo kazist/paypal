@@ -9,9 +9,9 @@
 <input type="hidden" name="currency_code" value="USD">
 <input type='hidden' name='amount' value='{{gateway.total_amount/converter.buying|default(1)}}'>
 <input type="hidden" name="a3" value="{{gateway.total_amount/converter.buying|default(1)}}">
-<input type='hidden' name='cancel_return' value='{{ generate_url('paypal.payments.cancel') }}'>
-<input type='hidden' name='return' value='{{ generate_url('paypal.payments.return' ) }}'>
-<input type='hidden' name='notify_url' value='{{ generate_url('paypal.payments.notify' ) }}'>
+<input type='hidden' name='cancel_return' value='{{ generate_url('paypal.payments.cancel', null, 0) }}'>
+<input type='hidden' name='return' value='{{ generate_url('paypal.payments.return', null, 0 ) }}'>
+<input type='hidden' name='notify_url' value='{{ generate_url('paypal.payments.notify', null, 0 ) }}'>
 
 <center>
     <a class="process-payment"  href="#" title="Pay with Paypal">
