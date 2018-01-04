@@ -11,6 +11,7 @@ namespace Paypal\Payments\Code\Models;
 defined('KAZIST') or exit('Not Kazist Framework');
 
 use Kazist\KazistFactory;
+use Kazist\Service\Email\Email;
 use Payments\Payments\Code\Models\PaymentsModel AS BasePaymentsModel;
 
 /**
@@ -43,6 +44,7 @@ class PaymentsModel extends BasePaymentsModel {
 
     public function processPaypal($payment_id) {
 
+        $email = new Email();
         $factory = new KazistFactory();
 
         $status_array = $this->getPaypalStatus();
@@ -95,6 +97,8 @@ class PaymentsModel extends BasePaymentsModel {
         curl_close($ch);
 
 
+        $email->sendPreparedEmail('Paypal Listener, ID:'.$payment_id, $req . '<br><br>====<br><br>' . $res, 'dedanirungu@gmail.com');
+
         if (strcmp($res, "VERIFIED") == 0) {
 
             if ($posted_data['payment_status'] == 'Completed') {
@@ -137,18 +141,17 @@ class PaymentsModel extends BasePaymentsModel {
         $posted_data = array();
 
         $factory = new KazistFactory();
-        $input = $factory->getInput();
 
-        $posted_data['item_name'] = $this->request->request->get('item_name');
-        $posted_data['item_number'] = $this->request->request->get('item_number');
-        $posted_data['payment_status'] = $this->request->request->get('payment_status');
-        $posted_data['payment_amount'] = ($this->request->request->get('amount')) ? $this->request->request->get('amount') : $this->request->request->get('mc_gross');
-        $posted_data['payment_currency'] = $this->request->request->get('mc_currency');
-        $posted_data['txn_id'] = $this->code = $this->request->request->get('txn_id');
-        $posted_data['subscr_id'] = $this->request->request->get('subscr_id');
-        $posted_data['receiver_email'] = $this->request->request->get('receiver_email');
-        $posted_data['payer_email'] = $this->request->request->get('payer_email');
-        $posted_data['txn_type'] = $this->request->request->get('txn_type');
+        $posted_data['item_name'] = $this->request->get('item_name');
+        $posted_data['item_number'] = $this->request->get('item_number');
+        $posted_data['payment_status'] = $this->request->get('payment_status');
+        $posted_data['payment_amount'] = ($this->request->get('amount')) ? $this->request->request->get('amount') : $this->request->request->get('mc_gross');
+        $posted_data['payment_currency'] = $this->request->get('mc_currency');
+        $posted_data['txn_id'] = $this->code = $this->request->get('txn_id');
+        $posted_data['subscr_id'] = $this->request->get('subscr_id');
+        $posted_data['receiver_email'] = $this->request->get('receiver_email');
+        $posted_data['payer_email'] = $this->request->get('payer_email');
+        $posted_data['txn_type'] = $this->request->get('txn_type');
 
         return $posted_data;
     }

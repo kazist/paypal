@@ -20,5 +20,31 @@ defined('KAZIST') or exit('Not Kazist Framework');
 use Payments\Payments\Code\Controllers\PaymentsController AS BasePaymentsController;
 
 class PaymentsController extends BasePaymentsController {
-    
+
+    public function cancelAction() {
+
+        $payment_id = $this->request->query->get('item_number');
+
+        $this->model->cancelTransaction($payment_id);
+
+        return $this->redirectToRoute('payments.payments');
+    }
+
+    public function returnAction() {
+
+        $payment_id = $this->request->query->get('item_number');
+
+        $this->model->completeTransaction($payment_id);
+
+        return $this->redirectToRoute('payments.payments');
+    }
+
+    public function notifyAction() {
+        $payment_id = $this->request->get('item_number');
+
+        $this->model->notificationTransaction($payment_id);
+
+        return $this->redirectToRoute('payments.payments');
+    }
+
 }
